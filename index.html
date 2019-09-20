@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inventario</title>
+</head>
+
+<body>
+    <div>
+        <h3>Registro de Articulos</h3>
+        <label>Articulo code:</label>
+        <input type="text" id="codigo"><br>
+
+        <label>Nombre del Articulo:</label>
+        <input type="text" id="nombre"><br>
+
+        <label>Precio del Articulo:</label>
+        <input type="text" id="precio"><br>
+
+        <label>Cantidad de Articulos:</label>
+        <input type="text" id="cantidad"><br>
+
+        <label>Descripcion del Articulo:</label>
+        <input type="text" id="descripcion"><br>
+
+        <button id="registrar" type="button">Registrar</button><br>
+
+        <div id="mostrarInventario"></div>
+    </div>
+        
+    <div>
+        <h3>Consultas de Articulos</h3>
+
+        <input type="text" id="codigoConsulta">
+        <button id="cosulta">Consultar</button><br>
+        
+        <div id="mostrarConsulta"></div>
+    </div>
+
+    <div>
+        <h3>Delet product</h3>
+
+        <input type="text" id="codigoEliminar">
+        <button id="eliminar">Eliminar</button>
+    </div>
+
+</body>
+<script src="Main.js" type="module"></script>
+
+</html>
