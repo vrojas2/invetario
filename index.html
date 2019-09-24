@@ -11,7 +11,7 @@
 <body>
     <div>
         <h3>Registro de Articulos</h3>
-        <label>Articulo code:</label>
+        <label>Codigo del Articulo:</label>
         <input type="text" id="codigo"><br>
 
         <label>Nombre del Articulo:</label>
@@ -28,21 +28,23 @@
 
         <button id="registrar" type="button">Registrar</button><br>
 
-        <div id="mostrarInventario"></div>
-    </div>
-        
-    <div>
-        <h3>Consultas de Articulos</h3>
+        <div id="verInventario"></div><br>
 
-        <input type="text" id="codigoConsulta">
-        <button id="cosulta">Consultar</button><br>
-        
+        <label>Posicion:</label>
+        <input type="text" id="posicion">
+
+        <button id="insertar" type="button">insertar</button>
+    </div>
+
+    <div>
+        <h3>Consultar Articulo</h3>
+        <input type="text" id="consultarCodigo">
+        <button id="consulta">Consultar</button><br>
         <div id="mostrarConsulta"></div>
     </div>
 
     <div>
-        <h3>Delet product</h3>
-
+        <h3>Eliminar articulo</h3>
         <input type="text" id="codigoEliminar">
         <button id="eliminar">Eliminar</button>
     </div>
