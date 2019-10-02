@@ -17,17 +17,15 @@ export default class Inventario {
     registrarArticulo(articulo) {
         if (this._buscarArticuloRegistrado(articulo.codigo) == -1) {
             let nuevoArticulo = new Articulo(articulo);
-            this._inventario[this._inventario.length] = nuevoArticulo;
-        }
-    }
-
-    agregarArticuloEnPosicion(articulo, posicion) {
-        if (this._buscarArticuloRegistrado(articulo.codigo) == -1) {
-            let nuevoArticulo = new Articulo(articulo);
-            for (let i = this._inventario.length - 1; i >= posicion - 1; i--) {
-                this._inventario[i + 1] = this._inventario[i];
+            if (this._inventario.length == 0) {
+                this._inventario[0] = nuevoArticulo;
+            } else {
+                let posicion = this._searchVariable(articulo.codigo);
+                for (let i = this._inventario.length - 1; i >= posicion - 1; i--) {
+                    this._inventario[i + 1] = this._inventario[i];
+                }
+                this._inventario[posicion - 1] = nuevoArticulo;
             }
-            this._inventario[posicion - 1] = nuevoArticulo;
         }
     }
 
@@ -36,9 +34,9 @@ export default class Inventario {
     }
 
     _inventarioToString() {
-        this._inventarioString="";
+        this._inventarioString = "";
         for (let i = 0; i < this._inventario.length; i++) {
-            this._inventarioString += this._inventario[i].toString()+"<br>";
+            this._inventarioString += this._inventario[i].toString() + "<br>";
         }
     }
 
@@ -61,6 +59,7 @@ export default class Inventario {
     eliminarArticulo(codigo) {
         let index = this._buscarArticuloRegistrado(codigo);
         if (index >= 0) {
+            _buscarArticuloRegistrado()
             for (let i = index + 1; i <= this._inventario.length; i++) {
                 this._inventario[i - 1] = this._inventario[i]
             }
@@ -70,5 +69,33 @@ export default class Inventario {
             nuevoInventario[i] = this._inventario[i];
         }
         this._inventario = nuevoInventario;
+    }
+
+    _searchVariable() { //busqueda binaria
+        let ultimaPosicion = this._inventario.length - 1,
+            primeraPosicion = 0,
+            media = 0;
+
+        while (this._obtenerDifereca(primeraPosicion, ultimaPosicion) >= 1) {
+            media = this._obtenerMedia(primeraPosicion, ultimaPosicion);
+            if (codigo < this._inventario[media].codigo) {
+                ultimaPosicion = media;
+            } else {
+                primeraPosicion = media;
+            }
+        }
+        if (codigo > this._inventario[ultimaPosicion].codigo) {
+            return ultimaPosicion;
+        } else {
+            return primeraPosicion;
+        }
+    }
+
+    _obtenerMedia(bP, uP) {
+        return Math.trunc((bP + uP) / 2);
+    }
+
+    _obtenerDifereca(bP, uP) {
+        return (uP - bP) / 2;
     }
 }

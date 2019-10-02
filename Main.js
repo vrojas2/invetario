@@ -5,7 +5,7 @@ let btnRegistar = document.querySelector("#registrar"),
     btnInsertar = document.querySelector("#insertar"),
     mostrarInventario = document.querySelector("#verInventario"),
     mostrarConsulta = document.querySelector("#mostrarConsulta"),
-    btnEliminar = document.querySelector("#eliminar");
+    btnEliminar = document.querySelector("#eliminarCodigo");
 
 btnRegistar.addEventListener("click", () => {
     m.registrarNuevoArticulo(m.infoInputs());
@@ -36,7 +36,7 @@ class Main {
     }
 
     insertarArticulo(articulo, posicion) {
-        this._baseInventario.agregarArticuloEnPosicion(articulo, posicion);
+        this._baseInventario.registrarArticulo(articulo, posicion);
         this.verInventario();
     }
 
